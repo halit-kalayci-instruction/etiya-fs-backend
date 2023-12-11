@@ -1,8 +1,5 @@
 package com.etiya.training.controllers;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -10,9 +7,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductsController {
 
     // localhost:8080/api/products GET
+    // localhost:8080/api/products?a=Halit GET
     @GetMapping
-    public String hello() {
-        return "Merhaba";
+    public String hello(@RequestParam("a") String name) {
+        return "Merhaba " + name;
     }
-    // 11:05
+
+    // HTTP Method değiştirmek
+    // URL'i değiştirmek
+    // TODO: Parametre yapısını değiştirmek
+
+    // localhost:8080/api/products/get2 GET
+    @GetMapping("{name}") // { değişken }
+    public String hello2(@PathVariable String name) {
+        return "Merhaba 2 " + name;
+    }
 }
