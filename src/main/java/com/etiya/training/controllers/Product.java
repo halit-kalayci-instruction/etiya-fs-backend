@@ -1,6 +1,15 @@
 package com.etiya.training.controllers;
 
+import lombok.Data;
+
+@Data // => getter-setter
 public class Product {
-    public int id;
-    public String name;
+    // encapsulation
+    // alanlara direkt erişimin kısıtlanması
+
+    // private => sadece class içi erişilebilir..
+    private int id;
+    private String name;
+
+    // getter-setter
 }
