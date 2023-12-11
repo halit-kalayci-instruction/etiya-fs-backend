@@ -15,11 +15,27 @@ public class ProductsController {
 
     // HTTP Method değiştirmek
     // URL'i değiştirmek
-    // TODO: Parametre yapısını değiştirmek
-
+    // Parametre yapısını değiştirmek
     // localhost:8080/api/products/get2 GET
     @GetMapping("{name}") // { değişken }
     public String hello2(@PathVariable String name) {
         return "Merhaba 2 " + name;
     }
+
+    @PostMapping
+    public String postMapping(@RequestBody Product product)
+    {
+        return "Eklenen ürün idsi: " + product.id + " name'i: " + product.name;
+    }
+
+    @PutMapping
+    public String putMapping() {
+        return "Put mapping çalışıyor..";
+    }
+
+    @DeleteMapping
+    public String deleteMapping() {
+        return "Delete mapping çalışıyor";
+    }
 }
+
