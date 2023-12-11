@@ -25,6 +25,10 @@ public class ProductsController {
     @PostMapping
     public String postMapping(@RequestBody Product product)
     {
+        Product product1 = new Product(1, "Ürün Adı");
+
+        Product product2  = new Product();
+
         return "Eklenen ürün idsi: " + product.getId() + " name'i: " + product.getName();
     }
 
