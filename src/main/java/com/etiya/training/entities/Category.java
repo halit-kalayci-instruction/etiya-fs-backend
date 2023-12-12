@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Table(name="categories")
 @Entity
 @Data // getter-setter
@@ -21,7 +23,4 @@ public class Category {
 
     @Column(name="description")
     private String description;
-
-    @Column(name="picture")
-    private byte[] picture;
 }

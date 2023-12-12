@@ -1,0 +1,27 @@
+package com.etiya.training.entities;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name="products")
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Product {
+    @Column(name="product_id")
+    @Id
+    private Short productId;
+
+    @Column(name="product_name")
+    private String productName;
+
+    @Column(name="quantity_per_unit")
+    private String quantityPerUnit;
+
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
+}
