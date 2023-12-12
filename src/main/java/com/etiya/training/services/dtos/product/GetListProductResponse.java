@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductForAddDto {
+public class GetListProductResponse {
+    private Short productId;
     private String productName;
-    private String quantityPerUnit;
-    private int discontinued;
-    private Short categoryId;
 }

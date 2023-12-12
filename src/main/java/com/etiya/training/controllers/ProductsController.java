@@ -1,9 +1,8 @@
 package com.etiya.training.controllers;
 import com.etiya.training.entities.Product;
-import com.etiya.training.repositories.ProductRepository;
 import com.etiya.training.services.abstracts.ProductService;
-import com.etiya.training.services.concretes.ProductManager;
-import com.etiya.training.services.dtos.product.ProductForAddDto;
+import com.etiya.training.services.dtos.product.AddProductRequest;
+import com.etiya.training.services.dtos.product.GetListProductResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +23,8 @@ public class ProductsController {
     // localhost:8080/api/products GET
     // localhost:8080/api/products?a=Halit GET
     @GetMapping
-    public List<Product> getAll(){
-        return null; // Select * from products
+    public List<GetListProductResponse> getAll(){
+        return productService.getAll(); // Select * from products
     }
 
     // HTTP Method değiştirmek
@@ -38,14 +37,14 @@ public class ProductsController {
     }
 
     @PostMapping
-    public Product add(@RequestBody ProductForAddDto product)
+    public Product add(@RequestBody AddProductRequest product)
     {
         return productService.add(product);
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable Short id) {
-
+        productService.delete(id);
     }
 
     @PutMapping
