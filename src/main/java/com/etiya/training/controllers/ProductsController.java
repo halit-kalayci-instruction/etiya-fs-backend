@@ -3,6 +3,7 @@ import com.etiya.training.entities.Product;
 import com.etiya.training.repositories.ProductRepository;
 import com.etiya.training.services.abstracts.ProductService;
 import com.etiya.training.services.concretes.ProductManager;
+import com.etiya.training.services.dtos.product.ProductForAddDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,9 +38,9 @@ public class ProductsController {
     }
 
     @PostMapping
-    public Product add(@RequestBody Product product)
+    public Product add(@RequestBody ProductForAddDto product)
     {
-        return null;
+        return productService.add(product);
     }
 
     @DeleteMapping("{id}")
