@@ -23,13 +23,9 @@ public class ProductsController {
     }
 
     @PostMapping
-    public String postMapping(@RequestBody Product product)
+    public String postMapping()
     {
-        Product product1 = new Product(1, "Ürün Adı");
-
-        Product product2  = new Product();
-
-        return "Eklenen ürün idsi: " + product.getId() + " name'i: " + product.getName();
+        return "Post mapping çalışıyor";
     }
 
     @PutMapping
