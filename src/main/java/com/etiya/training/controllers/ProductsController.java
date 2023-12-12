@@ -1,6 +1,8 @@
 package com.etiya.training.controllers;
 import com.etiya.training.entities.Product;
 import com.etiya.training.repositories.ProductRepository;
+import com.etiya.training.services.abstracts.ProductService;
+import com.etiya.training.services.concretes.ProductManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,19 +13,18 @@ import java.util.List;
 public class ProductsController {
 
     // spring tarafından auto
-    private final ProductRepository productRepository;
-    public ProductsController(ProductRepository productRepository)
-    {
-        this.productRepository = productRepository;
+    // DI her zaman soyut olmalı!
+    private final ProductService productService;
+
+    public ProductsController(ProductService productService) {
+        this.productService = productService;
     }
-
-
 
     // localhost:8080/api/products GET
     // localhost:8080/api/products?a=Halit GET
     @GetMapping
     public List<Product> getAll(){
-        return this.productRepository.findAll(); // Select * from products
+        return null; // Select * from products
     }
 
     // HTTP Method değiştirmek
@@ -32,25 +33,23 @@ public class ProductsController {
     // localhost:8080/api/products/get2 GET
     @GetMapping("{id}") // { değişken }
     public Product getById(@PathVariable Short id) {
-        return this.productRepository.findById(id).orElse(null);
+        return null;
     }
 
     @PostMapping
     public Product add(@RequestBody Product product)
     {
-        Product savedProduct = this.productRepository.save(product);
-        return savedProduct;
+        return null;
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable Short id) {
-        this.productRepository.deleteById(id);
+
     }
 
     @PutMapping
     public String update(@RequestBody Product product) {
         // Save methodu ilgili entitynin idsi var ise güncelleme, yok ise ekleme yapar.
-        this.productRepository.save(product);
         return "Put mapping çalışıyor..";
     }
 
