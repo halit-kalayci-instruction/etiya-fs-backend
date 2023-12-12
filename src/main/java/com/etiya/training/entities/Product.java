@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Product {
     @Column(name="product_id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Short productId;
 
     @Column(name="product_name")
@@ -20,6 +21,9 @@ public class Product {
 
     @Column(name="quantity_per_unit")
     private String quantityPerUnit;
+
+    @Column(name="discontinued")
+    private int discontinued;
 
     @ManyToOne
     @JoinColumn(name="category_id")

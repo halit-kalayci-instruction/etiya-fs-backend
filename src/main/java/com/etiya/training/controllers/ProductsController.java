@@ -36,19 +36,24 @@ public class ProductsController {
     }
 
     @PostMapping
-    public String postMapping()
+    public Product add(@RequestBody Product product)
     {
-        return "Post mapping çalışıyor";
+        Product savedProduct = this.productRepository.save(product);
+        return savedProduct;
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Short id) {
+        this.productRepository.deleteById(id);
     }
 
     @PutMapping
-    public String putMapping() {
+    public String update(@RequestBody Product product) {
+        // Save methodu ilgili entitynin idsi var ise güncelleme, yok ise ekleme yapar.
+        this.productRepository.save(product);
         return "Put mapping çalışıyor..";
     }
 
-    @DeleteMapping
-    public String deleteMapping() {
-        return "Delete mapping çalışıyor";
-    }
+
 }
 
