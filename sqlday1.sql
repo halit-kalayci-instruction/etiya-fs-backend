@@ -157,7 +157,7 @@ HAVING count(*) > 50
 order by count(*) desc
 LIMIT 5
 
-Select * from categories
+Select * from categories where deleted_date IS NULL
 -- Insert INTO => 
 
 Insert INTO categories(category_name, description, picture) 
@@ -174,5 +174,7 @@ SET category_name='Update Deneme 2',description='Bu sql komutuyla güncellenmiş
 Where category_id=10
 
 -- bir koşul verilmediğinde tüm veri setini etkiler
+-- Hard Delete
 Delete from categories WHERE category_id=1
 
+-- Soft Delete
