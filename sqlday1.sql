@@ -136,3 +136,26 @@ INNER JOIN employees e on o.employee_id=e.employee_id
 
 -- Limit X => X adet veri getirir.
 Select * from products order by unit_price desc LIMIT 10
+
+
+-- Group By
+Select city, count(*) from customers
+group by city
+-- group by'da groupladığım alanları seçebilirim
+
+-- having => Group BY'ın where'i
+Select product_id,quantity, count(*) from order_details
+group by product_id,quantity
+HAVING product_id=19
+
+-- 50'den fazla en fazla sipariş alan çalışanların ilk 5'i
+-- Alias verirken çift tırnak!!
+Select e.first_name as "Ad", e.last_name as "Soyad", count(*) as "Toplam Sipariş Sayısı" from orders o
+INNER JOIN employees e on o.employee_id=e.employee_id
+group by e.first_name,e.last_name
+HAVING count(*) > 50
+order by count(*) desc
+LIMIT 5
+
+
+Select * from customers
