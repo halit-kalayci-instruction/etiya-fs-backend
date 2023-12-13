@@ -52,3 +52,25 @@ Select * from customers Where contact_name LIKE 'H%s'
 Select * from customers Where contact_name LIKE '%s'
 -- Mart ile başlayan customerlar
 Select * from customers Where contact_name LIKE 'Mart%'
+
+-- Built-in Functions
+--LOWER()
+--UPPER()
+--SUBSTRING()
+--TRIM()
+Select UPPER(company_name) from customers
+
+-- Martin Sommer
+-- MART
+
+-- martin sommer
+-- mart
+Select * from customers Where LOWER(contact_name) LIKE LOWER('MART%')
+-- _ => karakter sayısı önemli, karakterin içeriği önemli değil
+-- li_ liu, liz
+-- liza
+Select * from customers Where LOWER(contact_name) LIKE LOWER('_li%') Order By contact_name
+
+Select * from customers Where LOWER(contact_name) LIKE LOWER('__i%') Order By contact_name
+
+
