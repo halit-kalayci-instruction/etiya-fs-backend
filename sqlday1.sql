@@ -27,3 +27,28 @@ Select * from products ORDER BY supplier_id -- küçükten büyüğe
 -- ASC, DESC => Ascending,Descending
 Select * from products ORDER BY product_name DESC -- z-a
 Select * from products ORDER BY supplier_id DESC -- büyükten küçüğe
+
+-- .... Filtre, Sıralama
+Select * from products Where units_in_stock > 20 ORDER BY product_name
+
+
+-- Distinct => Veri setinde ilgili veriden yalnızca bir adet olmasını sağlar.
+Select DISTINCT city from customers Order by city
+Select city from customers Order by city
+
+-- Kombinasyon olarak iki veriyi de kontrol eder.
+Select DISTINCT city,region from customers order by city
+
+-- "" => ''
+Select * from customers Where city='México D.F.'
+
+-- % => bu metinden öncesi/sonrası önemli değil
+
+-- İçinde Mar geçen customerlar
+Select * from customers Where contact_name LIKE '%rio%'
+-- H ile başlayan s ile biten customerlar
+Select * from customers Where contact_name LIKE 'H%s'
+-- s ile biten customerlar
+Select * from customers Where contact_name LIKE '%s'
+-- Mart ile başlayan customerlar
+Select * from customers Where contact_name LIKE 'Mart%'
