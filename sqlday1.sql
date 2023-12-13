@@ -127,4 +127,12 @@ Select * from products p full outer join order_details od on p.product_id = od.p
 
 
 
+Select * from products p
+INNER JOIN categories c on p.category_id = c.category_id 
+INNER JOIN order_details od on p.product_id=od.product_id
+INNER JOIN orders o on od.order_id = o.order_id
+INNER JOIN employees e on o.employee_id=e.employee_id
+-- 
 
+-- Limit X => X adet veri getirir.
+Select * from products order by unit_price desc LIMIT 10
