@@ -157,5 +157,22 @@ HAVING count(*) > 50
 order by count(*) desc
 LIMIT 5
 
+Select * from categories
+-- Insert INTO => 
 
-Select * from customers
+Insert INTO categories(category_name, description, picture) 
+VALUES ('Insert deneme', 'Bu sql komutuyla eklenmiştir', NULL)
+
+Insert INTO categories(category_name, description) 
+VALUES ('Insert deneme', 'Bu sql komutuyla eklenmiştir')
+
+
+-- Update,Delete => Sensitive
+
+Update categories
+SET category_name='Update Deneme 2',description='Bu sql komutuyla güncellenmiştir. 2'
+Where category_id=10
+
+-- bir koşul verilmediğinde tüm veri setini etkiler
+Delete from categories WHERE category_id=1
+
