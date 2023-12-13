@@ -97,8 +97,34 @@ Select * from customers where customer_id IN('ALFKI','ANATR','AROUT')
 Select * from products where unit_price > 10 and unit_price < 20
 Select * from products where unit_price BETWEEN 10 and 20
 
--- JOIN
-Select * from products
-select * from suppliers
+-- En pahalı ürünüm hangisi?
+-- İç içe sorgular - Sub Queries
+Select * from products where unit_price= ( Select max(unit_price) from products ) 
 
--- 14:00
+
+-- En çok satış yaptığım ürün hangisi?
+
+
+-- En kârlı satış yaptığım ürün hangisi?
+
+--"Beverages"
+-- Kullanıcının girdiği kategori ismindeki ürünler?
+
+-- JOINLER => FK ile bağlı iki tablonun tek veri setinde toplanması.
+Select * from products INNER JOIN categories on products.category_id = categories.category_id
+-- alias => takma ad
+Select p.supplier_id, p.category_id from products p INNER JOIN categories c on p.category_id = c.category_id
+
+-- Hiç sipariş edilmemiş ürün?
+-- products inner join order_details
+
+-- Her ürünün sipariş miktarını bulmak
+-- 80 idli ürün 0 kez sipariş edilmiştir.
+Select * from products p left join order_details od on p.product_id = od.product_id where p.product_id=80
+
+Select * from products p full outer join order_details od on p.product_id = od.product_id
+
+
+
+
+
