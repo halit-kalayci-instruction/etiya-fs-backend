@@ -74,3 +74,31 @@ Select * from customers Where LOWER(contact_name) LIKE LOWER('_li%') Order By co
 Select * from customers Where LOWER(contact_name) LIKE LOWER('__i%') Order By contact_name
 
 
+-- Sum => Verilerdeki bir column'ın tüm toplamı
+Select sum(unit_price) from order_details
+Select sum(units_in_stock) from products
+-- Count => Veri adeti
+Select COUNT(*) from customers
+-- Avg => Average => aritmetik ortalama
+Select AVG(unit_price) from products
+-- Select SUM(unit_price) / Count(unit_price) from products
+-- Min
+Select MIN(unit_price) from products
+-- Max
+Select MAX(unit_price) from products
+
+-- Select * from products where unit_price = MAX(unit_price)
+
+-- IN
+Select * from customers Where customer_id = 'ALFKI' or customer_id = 'ANATR' or customer_id='AROUT'
+Select * from customers where customer_id IN('ALFKI','ANATR','AROUT')
+
+-- Between
+Select * from products where unit_price > 10 and unit_price < 20
+Select * from products where unit_price BETWEEN 10 and 20
+
+-- JOIN
+Select * from products
+select * from suppliers
+
+-- 14:00
