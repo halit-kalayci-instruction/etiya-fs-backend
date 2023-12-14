@@ -54,18 +54,19 @@ public class ProductManager implements ProductService
 
     @Override
     public List<GetListProductResponse> getAll() {
-        List<Product> products = productRepository.findAll();
+        // Manual Mapping
+       /* List<Product> products = productRepository.findAllCustom();
 
         List<GetListProductResponse> response=new ArrayList<>();
 
         // TODO: Refactor
         for (Product product: products) {
-            GetListProductResponse dto = new GetListProductResponse();
-            dto.setProductId(product.getProductId());
-            dto.setProductName(product.getProductName());
+            GetListProductResponse dto = new GetListProductResponse(product.getProductId(), product.getProductName());
             response.add(dto);
         }
+        */
 
-        return response;
+
+        return productRepository.getAll();
     }
 }
