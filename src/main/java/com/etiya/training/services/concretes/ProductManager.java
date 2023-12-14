@@ -2,10 +2,12 @@ package com.etiya.training.services.concretes;
 
 import com.etiya.training.entities.Category;
 import com.etiya.training.entities.Product;
+import com.etiya.training.repositories.CategoryRepository;
 import com.etiya.training.repositories.ProductRepository;
 import com.etiya.training.services.abstracts.ProductService;
 import com.etiya.training.services.dtos.product.AddProductRequest;
 import com.etiya.training.services.dtos.product.GetListProductResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,29 +18,31 @@ import java.util.List;
 // class-class => extends
 // class-interface => implements
 @Service
+@AllArgsConstructor
 public class ProductManager implements ProductService
 {
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository; // yanlış kullanım
 
-    public ProductManager(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+
 
     @Override
     public Product add(AddProductRequest request) {
         // ekleme işi için iş akışı
         // dTo => Transfer => Mapping
 
+        // request.categoryId 6
+        // 6 ?
+        Category category = categoryRepository
+                .findById(request.getCategoryId())
+                .orElseThrow( () -> new RuntimeException("Verilen id ile bir kategori bulunamadı.") );
+
+
         // Manual Mapping
         Product newProduct = new Product();
         newProduct.setProductName(request.getProductName());
         newProduct.setQuantityPerUnit(request.getQuantityPerUnit());
         newProduct.setDiscontinued(request.getDiscontinued());
-
-        // TODO: Kategori veritabanından kullanıcının verdiği id ile bi kayıt varsa onu kullan yoksa hata ver.
-        Category category = new Category();
-        category.setCategoryId(request.getCategoryId());
-
         newProduct.setCategory(category);
 
         return this.productRepository.save(newProduct);
