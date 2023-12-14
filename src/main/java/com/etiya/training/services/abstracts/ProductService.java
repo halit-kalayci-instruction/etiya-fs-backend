@@ -11,4 +11,5 @@ public interface ProductService
     Product add(AddProductRequest request);
     void delete(Short id);
     List<GetListProductResponse> getAll();
+    List<GetListProductResponse> search(String name);
 }

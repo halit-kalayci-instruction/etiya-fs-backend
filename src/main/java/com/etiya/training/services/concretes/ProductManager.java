@@ -55,7 +55,7 @@ public class ProductManager implements ProductService
     @Override
     public List<GetListProductResponse> getAll() {
         // Manual Mapping
-       /* List<Product> products = productRepository.findAllCustom();
+        /* List<Product> products = productRepository.findAllCustom();
 
         List<GetListProductResponse> response=new ArrayList<>();
 
@@ -66,7 +66,14 @@ public class ProductManager implements ProductService
         }
         */
 
+        // SQL olarak işlem daha mı kolay? Daha mı zor?
 
+        // Lambda Expression & Stream API
         return productRepository.getAll();
+    }
+
+    @Override
+    public List<GetListProductResponse> search(String name) {
+        return productRepository.getByName(name.toLowerCase());
     }
 }

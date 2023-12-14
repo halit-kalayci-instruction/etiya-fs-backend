@@ -23,4 +23,11 @@ public interface ProductRepository extends JpaRepository<Product, Short>
     // JpaBase.Java
     @Query("Select new com.etiya.training.services.dtos.product.GetListProductResponse(p.productId, p.productName) from Product p")
     List<GetListProductResponse> getAll();
+
+    // anonym parameter - named parameter
+    // ?1 => 1. sıradaki parametre
+    // :name => name isminde parametre
+    @Query("Select new com.etiya.training.services.dtos.product.GetListProductResponse(p.productId, p.productName) " +
+            "from Product p Where LOWER(p.productName) LIKE %:name%")
+    List<GetListProductResponse> getByName(String name);
 }

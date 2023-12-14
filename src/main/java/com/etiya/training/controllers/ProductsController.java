@@ -36,6 +36,11 @@ public class ProductsController {
         return null;
     }
 
+    @GetMapping("search")
+    public List<GetListProductResponse> search(@RequestParam String name)
+    {
+        return productService.search(name);
+    }
     @PostMapping
     public Product add(@RequestBody AddProductRequest product)
     {
