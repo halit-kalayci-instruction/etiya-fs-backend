@@ -3,6 +3,7 @@ import com.etiya.training.entities.Product;
 import com.etiya.training.services.abstracts.ProductService;
 import com.etiya.training.services.dtos.product.AddProductRequest;
 import com.etiya.training.services.dtos.product.GetListProductResponse;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class ProductsController {
         return productService.search(name);
     }
     @PostMapping
-    public Product add(@RequestBody AddProductRequest product)
+    public Product add(@RequestBody @Valid AddProductRequest product)
     {
         return productService.add(product);
     }
