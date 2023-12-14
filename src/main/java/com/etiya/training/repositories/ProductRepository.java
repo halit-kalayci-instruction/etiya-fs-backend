@@ -19,6 +19,8 @@ public interface ProductRepository extends JpaRepository<Product, Short>
 
     // String => Kod bloğu
     // classın tam yolu
+
+    // JpaBase.Java
     @Query("Select new com.etiya.training.services.dtos.product.GetListProductResponse(p.productId, p.productName) from Product p")
     List<GetListProductResponse> getAll();
 }
