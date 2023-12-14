@@ -36,9 +36,8 @@ public class ProductManager implements ProductService
 
         // request.categoryId 6
         // 6 ?
-        Category category = categoryService
-                .getById(request.getCategoryId())
-                .orElseThrow( () -> new BusinessException("Verilen id ile bir kategori bulunamadı.") );
+        // ** => Business rulelar method içerisine direkt yazılmamalı ayrı methodlar halinde kodlanmalıdır..
+        Category category = throwExceptionIfCategoryNotExists(request.getCategoryId());
 
 
         // Manual Mapping
@@ -58,6 +57,13 @@ public class ProductManager implements ProductService
         // kod bu satırda kesilecek
 
         productRepository.delete(productToDelete);
+    }
+
+    @Override
+    public Product update() {
+        throwExceptionIfCategoryNotExists((short)6);
+
+        return null;
     }
 
     @Override
@@ -104,5 +110,13 @@ public class ProductManager implements ProductService
     @Override
     public List<GetListProductResponse> search(String name) {
         return productRepository.getByName(name.toLowerCase());
+    }
+
+
+
+    private Category throwExceptionIfCategoryNotExists(Short id){
+        return categoryService
+                .getById(id)
+                .orElseThrow( () -> new BusinessException("Verilen id ile bir kategori bulunamadı.") );
     }
 }

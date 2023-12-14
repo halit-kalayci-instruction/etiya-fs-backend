@@ -10,6 +10,7 @@ public interface ProductService
 {
     Product add(AddProductRequest request);
     void delete(Short id);
+    Product update();
     List<GetListProductResponse> getAll();
     List<GetListProductResponse> search(String name);
 }
