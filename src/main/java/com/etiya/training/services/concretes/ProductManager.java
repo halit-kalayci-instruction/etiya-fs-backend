@@ -9,6 +9,7 @@ import com.etiya.training.services.dtos.product.GetListProductResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 // interface-interface => extends
@@ -69,7 +70,23 @@ public class ProductManager implements ProductService
         // SQL olarak işlem daha mı kolay? Daha mı zor?
 
         // Lambda Expression & Stream API
-        return productRepository.getAll();
+        List<Product> products = productRepository.findAll();
+
+        // Bir Iterable (koleksiyon) alanın stream türüne çevrilerek üzerinde stream API işlevlerinin gerçekleştirilmesi.
+        // Java 8
+        products.stream().forEach((product) -> {
+
+        });
+
+
+        List<GetListProductResponse> dtos = products.stream().map((product) -> {
+           return new GetListProductResponse(product.getProductId(), product.getProductName());
+        }).toList();
+
+        // GetListProductResponse::getProductId => GetListProductResponse class içerisindeki getProductId REFERANSI!
+        dtos = dtos.stream().sorted(Comparator.comparing(GetListProductResponse::getProductName).reversed()).toList();
+
+        return dtos;
     }
 
     @Override
