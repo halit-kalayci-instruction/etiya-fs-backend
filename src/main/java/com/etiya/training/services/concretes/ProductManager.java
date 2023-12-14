@@ -79,12 +79,17 @@ public class ProductManager implements ProductService
         });
 
 
-        List<GetListProductResponse> dtos = products.stream().map((product) -> {
-           return new GetListProductResponse(product.getProductId(), product.getProductName());
-        }).toList();
+        List<GetListProductResponse> dtos = products
+                .stream()
+                .filter((product) -> product.getDiscontinued() == 0 && product.getProductId() > 5)
+                .map((product) -> {
+                     return new GetListProductResponse(product.getProductId(), product.getProductName());
+                 })
+                .sorted(Comparator.comparing(GetListProductResponse::getProductName).reversed())
+                .toList();
 
         // GetListProductResponse::getProductId => GetListProductResponse class içerisindeki getProductId REFERANSI!
-        dtos = dtos.stream().sorted(Comparator.comparing(GetListProductResponse::getProductName).reversed()).toList();
+        //dtos = dtos.stream().sorted(Comparator.comparing(GetListProductResponse::getProductName).reversed()).toList();
 
         return dtos;
     }
