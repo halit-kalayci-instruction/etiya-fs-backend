@@ -1,5 +1,6 @@
 package com.etiya.training.core.utils.exceptions;
 
+import com.etiya.training.core.utils.exceptions.types.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,10 +21,10 @@ public class GlobalExceptionHandler {
         return errors;
     }
 
-    @ExceptionHandler({RuntimeException.class})
+    @ExceptionHandler({BusinessException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleBusinessException(RuntimeException exception) {
-        return "İş kuralı hatası yaptınız";
+    public String handleBusinessException(BusinessException exception) {
+        return exception.getMessage();
     }
 
     @ExceptionHandler({Exception.class})

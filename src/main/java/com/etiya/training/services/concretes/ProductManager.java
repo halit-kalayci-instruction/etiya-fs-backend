@@ -1,5 +1,6 @@
 package com.etiya.training.services.concretes;
 
+import com.etiya.training.core.utils.exceptions.types.BusinessException;
 import com.etiya.training.entities.Category;
 import com.etiya.training.entities.Product;
 import com.etiya.training.repositories.CategoryRepository;
@@ -37,7 +38,7 @@ public class ProductManager implements ProductService
         // 6 ?
         Category category = categoryService
                 .getById(request.getCategoryId())
-                .orElseThrow( () -> new RuntimeException("Verilen id ile bir kategori bulunamadı.") );
+                .orElseThrow( () -> new BusinessException("Verilen id ile bir kategori bulunamadı.") );
 
 
         // Manual Mapping
