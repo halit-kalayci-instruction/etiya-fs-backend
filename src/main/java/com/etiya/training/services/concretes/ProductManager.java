@@ -4,6 +4,7 @@ import com.etiya.training.entities.Category;
 import com.etiya.training.entities.Product;
 import com.etiya.training.repositories.CategoryRepository;
 import com.etiya.training.repositories.ProductRepository;
+import com.etiya.training.services.abstracts.CategoryService;
 import com.etiya.training.services.abstracts.ProductService;
 import com.etiya.training.services.dtos.product.AddProductRequest;
 import com.etiya.training.services.dtos.product.GetListProductResponse;
@@ -22,9 +23,10 @@ import java.util.List;
 public class ProductManager implements ProductService
 {
     private final ProductRepository productRepository;
-    private final CategoryRepository categoryRepository; // yanlış kullanım
+    private final CategoryService categoryService;
+    //private final CategoryRepository categoryRepository; // yanlış kullanım
 
-
+    // 15:00
 
     @Override
     public Product add(AddProductRequest request) {
@@ -33,8 +35,8 @@ public class ProductManager implements ProductService
 
         // request.categoryId 6
         // 6 ?
-        Category category = categoryRepository
-                .findById(request.getCategoryId())
+        Category category = categoryService
+                .getById(request.getCategoryId())
                 .orElseThrow( () -> new RuntimeException("Verilen id ile bir kategori bulunamadı.") );
 
 
