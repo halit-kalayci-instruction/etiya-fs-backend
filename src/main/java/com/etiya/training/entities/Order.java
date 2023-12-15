@@ -17,6 +17,7 @@ import java.util.List;
 public class Order {
     @Column(name="order_id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Short orderId;
 
     @Column(name="order_date")
