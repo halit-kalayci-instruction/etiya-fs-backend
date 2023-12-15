@@ -20,7 +20,7 @@ public class AddProductRequest {
     private String quantityPerUnit;
 
     @Min(0)
-    private int discontinued;
+    private int active;
 
     @Min(1)
     private Short categoryId;

@@ -49,7 +49,7 @@ public class ProductManager implements ProductService
         Product newProduct = new Product();
         newProduct.setProductName(request.getProductName());
         newProduct.setQuantityPerUnit(request.getQuantityPerUnit());
-        newProduct.setDiscontinued(request.getDiscontinued());
+        newProduct.setDiscontinued(request.getActive());
         newProduct.setCategory(category);
 
         return this.productRepository.save(newProduct);

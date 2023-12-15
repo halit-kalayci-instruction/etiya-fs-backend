@@ -8,6 +8,8 @@ import com.etiya.training.services.dtos.order.AddOrderRequest;
 import com.etiya.training.services.dtos.orderDetail.AddOrderDetailRequest;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,6 +19,7 @@ import java.time.LocalDate;
 public class OrderManager implements OrderService {
     private final OrderRepository orderRepository;
     private final OrderDetailService orderDetailService;
+    private final ModelMapper modelMapper;
     // Transactional YAPI
 
     @Transactional
@@ -24,6 +27,11 @@ public class OrderManager implements OrderService {
     public void add(AddOrderRequest request) {
         // request => order map
         // Manual Mapping => Auto Mapping
+
+        Order order = modelMapper.map(request, Order.class);
+        order.setOrderDate(LocalDate.now());
+
+        /*
         Order order = new Order();
         order.setOrderDate(LocalDate.now());
         order.setRequiredDate(request.getRequiredDate());
@@ -34,6 +42,7 @@ public class OrderManager implements OrderService {
         order.setShipRegion(request.getShipRegion());
         order.setShipPostalCode(request.getShipPostalCode());
         order.setShipCountry(request.getShipCountry());
+         */
 
         orderRepository.save(order);
         for (AddOrderDetailRequest product: request.getProducts()) {
