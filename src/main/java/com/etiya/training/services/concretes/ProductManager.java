@@ -2,8 +2,8 @@ package com.etiya.training.services.concretes;
 
 import com.etiya.training.core.utils.exceptions.types.BusinessException;
 import com.etiya.training.entities.Category;
+import com.etiya.training.entities.Order;
 import com.etiya.training.entities.Product;
-import com.etiya.training.repositories.CategoryRepository;
 import com.etiya.training.repositories.ProductRepository;
 import com.etiya.training.services.abstracts.CategoryService;
 import com.etiya.training.services.abstracts.ProductService;
@@ -12,7 +12,6 @@ import com.etiya.training.services.dtos.product.GetListProductResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -33,7 +32,6 @@ public class ProductManager implements ProductService
     public Product add(AddProductRequest request) {
         // ekleme işi için iş akışı
         // dTo => Transfer => Mapping
-
         // request.categoryId 6
         // 6 ?
         // ** => Business rulelar method içerisine direkt yazılmamalı ayrı methodlar halinde kodlanmalıdır..
