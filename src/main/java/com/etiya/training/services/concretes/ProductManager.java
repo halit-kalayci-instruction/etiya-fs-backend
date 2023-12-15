@@ -2,7 +2,6 @@ package com.etiya.training.services.concretes;
 
 import com.etiya.training.core.utils.exceptions.types.BusinessException;
 import com.etiya.training.entities.Category;
-import com.etiya.training.entities.Order;
 import com.etiya.training.entities.Product;
 import com.etiya.training.repositories.ProductRepository;
 import com.etiya.training.services.abstracts.CategoryService;
@@ -10,6 +9,8 @@ import com.etiya.training.services.abstracts.ProductService;
 import com.etiya.training.services.dtos.product.AddProductRequest;
 import com.etiya.training.services.dtos.product.GetListProductResponse;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -25,6 +26,8 @@ public class ProductManager implements ProductService
 {
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
+
+    private final ModelMapper modelMapper;
     //private final CategoryRepository categoryRepository; // yanlış kullanım
 
     // 15:00
@@ -40,6 +43,9 @@ public class ProductManager implements ProductService
 
 
         // Manual Mapping
+        // AddProductRequest - Product
+        Product mappedProduct = modelMapper.map(request,Product.class);
+        //     (source) AddProductRequest -> Product (destination)
         Product newProduct = new Product();
         newProduct.setProductName(request.getProductName());
         newProduct.setQuantityPerUnit(request.getQuantityPerUnit());

@@ -27,8 +27,9 @@ public class GlobalExceptionHandler {
         return exception.getMessage();
     }
 
-    @ExceptionHandler({Exception.class})
+   /* @ExceptionHandler({Exception.class})
     public String handleException(Exception exception) {
         return "Bilinmedik hata";
     }
+    */
 }
