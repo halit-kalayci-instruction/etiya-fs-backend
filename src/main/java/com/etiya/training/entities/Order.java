@@ -1,15 +1,13 @@
 package com.etiya.training.entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Table(name="orders")
 @Entity
@@ -50,4 +48,7 @@ public class Order {
 
     @Column(name="ship_country")
     private String shipCountry;
+
+    @OneToMany(mappedBy = "order") // değişken ismi
+    private List<OrderDetail> orderDetailList;
 }

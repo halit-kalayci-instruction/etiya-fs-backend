@@ -24,4 +24,12 @@ public class OrderDetail {
 
     @Column(name="discount")
     private Float discount;
+
+    @ManyToOne()
+    @JoinColumn(name="order_id")
+    private Order order;
+
+    @ManyToOne()
+    @JoinColumn(name="product_id")
+    private Product product;
 }
