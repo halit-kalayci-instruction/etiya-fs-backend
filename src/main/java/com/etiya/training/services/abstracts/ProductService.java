@@ -5,6 +5,7 @@ import com.etiya.training.services.dtos.product.AddProductRequest;
 import com.etiya.training.services.dtos.product.GetListProductResponse;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService
 {
@@ -13,4 +14,5 @@ public interface ProductService
     Product update();
     List<GetListProductResponse> getAll();
     List<GetListProductResponse> search(String name);
+    Optional<Product> getById(Short id);
 }

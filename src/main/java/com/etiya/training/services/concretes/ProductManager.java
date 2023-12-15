@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 // interface-interface => extends
 // class-class => extends
@@ -110,6 +111,10 @@ public class ProductManager implements ProductService
         return productRepository.getByName(name.toLowerCase());
     }
 
+    @Override
+    public Optional<Product> getById(Short id) {
+        return productRepository.findById(id);
+    }
 
 
     private Category throwExceptionIfCategoryNotExists(Short id){

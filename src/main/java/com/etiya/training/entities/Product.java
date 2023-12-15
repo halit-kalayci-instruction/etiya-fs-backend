@@ -27,6 +27,9 @@ public class Product {
     @Column(name="discontinued")
     private int discontinued;
 
+    @Column(name="unit_price")
+    private Float unitPrice;
+
     @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
