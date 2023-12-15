@@ -14,7 +14,9 @@ public class OrderDetail {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+    // int => primitive type
+    // Integer => Reference type
 
     @Column(name="unit_price")
     private Float unitPrice;
@@ -25,6 +27,9 @@ public class OrderDetail {
     @Column(name="discount")
     private Float discount;
 
+
+    // FK'nın olduğu tablo @ManyToOne
+    // @JoinColumn() => Foreign Key hangi column?
     @ManyToOne()
     @JoinColumn(name="order_id")
     private Order order;

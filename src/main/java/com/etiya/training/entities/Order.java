@@ -49,6 +49,9 @@ public class Order {
     @Column(name="ship_country")
     private String shipCountry;
 
+    // FK'nın referans verdiği tabloda ise
+    // @OneToMany(mappedBy="") FK'nın bulunduğu tablodaki
+    // konfigürasyonun yapıldığı değişken adı
     @OneToMany(mappedBy = "order") // değişken ismi
     private List<OrderDetail> orderDetailList;
 }
