@@ -18,18 +18,11 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE northwind2;
 --
 -- TOC entry 3432 (class 1262 OID 99319)
 -- Name: northwind2; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE northwind2 WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'English_United States.1254';
-
-
-ALTER DATABASE northwind2 OWNER TO postgres;
-
-\connect northwind2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
